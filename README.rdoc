@@ -9,20 +9,20 @@ Install the Heroku Toolbelt on your computer. The Heroku Toolbelt is installed b
 In the terminal, log in using the email address and password you used when creating your Heroku account:
 
 $ heroku login
-In Gemfile, add the pg gem to your Rails project. Change:
+In Gemfile, add the pg gem to your Rails project. Change
 
 gem sqlite
 to
 
 gem 'sqlite3', group: :development
 gem 'pg', '0.18.1', group: :production
-In Gemfile, add the rails_12factor gem::
+ In Gemfile, add the rails_12factor gem
 
 gem 'rails_12factor', group: :production
-In the terminal, install the gems specified in the Gemfile:
+ In the terminal, install the gems specified in the Gemfile
 
 $ bundle install
-Ensure config/database.yml is using the postgresql adapter. Change:
+Ensure config/database.yml is using the postgresql adapter. Change
 
 production:
   <<: *default
@@ -33,23 +33,23 @@ production:
   <<: *default
   adapter: postgresql
   database: db/production.sqlite3
-Commit your changes to git:
+Commit your changes to git
 
 $ git add .
 $ git commit -m "Heroku config"
-In the terminal, create an app on Heroku:
+In the terminal, create an app on Heroku
 
 $ heroku create
-Push your code to Heroku:
+Push your code to Heroku
 
 $ git push heroku master
-If you are using the database in your application, migrate the database by running:
+If you are using the database in your application, migrate the database by running
 
 $ heroku run rake db:migrate
-If you need to seed your database with data, run:
+If you need to seed your database with data, run
 
 $ heroku run rake db:seed
-Get the URL of your app and visit it in the browser:
+Get the URL of your app and visit it in the browser
 
 $ heroku apps:info
 In the output, copy the address in the Web URL field. Open a new tab in your browser, and visit your app.
