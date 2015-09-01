@@ -4,5 +4,55 @@ Experimentation with ruby on rails. The project was part of my 12 week program a
 
 
 Instructions in deploying to Heroku using Ruby on Rails.
+Create a new Heroku account.
+Install the Heroku Toolbelt on your computer. The Heroku Toolbelt is installed by default in new Codecademy workspaces.
+In the terminal, log in using the email address and password you used when creating your Heroku account:
+
+$ heroku login
+In Gemfile, add the pg gem to your Rails project. Change:
+
+gem sqlite
+to
+
+gem 'sqlite3', group: :development
+gem 'pg', '0.18.1', group: :production
+In Gemfile, add the rails_12factor gem::
+
+gem 'rails_12factor', group: :production
+In the terminal, install the gems specified in the Gemfile:
+
+$ bundle install
+Ensure config/database.yml is using the postgresql adapter. Change:
+
+production:
+  <<: *default
+  database: db/production.sqlite3
+to
+
+production:
+  <<: *default
+  adapter: postgresql
+  database: db/production.sqlite3
+Commit your changes to git:
+
+$ git add .
+$ git commit -m "Heroku config"
+In the terminal, create an app on Heroku:
+
+$ heroku create
+Push your code to Heroku:
+
+$ git push heroku master
+If you are using the database in your application, migrate the database by running:
+
+$ heroku run rake db:migrate
+If you need to seed your database with data, run:
+
+$ heroku run rake db:seed
+Get the URL of your app and visit it in the browser:
+
+$ heroku apps:info
+In the output, copy the address in the Web URL field. Open a new tab in your browser, and visit your app.
+Check out Heroku's Rails docs for more information.
 
 
